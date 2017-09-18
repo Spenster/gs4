@@ -117,7 +117,7 @@ loop {
     elsif (Time.now - lastscantime > 15)
   	lastscantime = Time.now
     	friendlist.each { |peep|
-      	if checkpcs.include?(peep) and !(peep.status =~ /dead/)
+      	if checkpcs.include?(peep) and !(GameObj.pcs.find { |npc| npc.name =~ /#{peep}/ }.status =~ /dead/)
              pause("1s")
              gd_wound_transfer(peep)
       	end
